@@ -8,8 +8,11 @@ OUTPUT_FILE='publications.csv'
 # Récupération des données depuis HAL
 curl -s $QUERY | jq '.response.docs[] | {title: .title_s, type: .docType_s, author: .authFullName_s, site: .strAffiliation_s}' > $TEMP_FILE
 
+# Conversion du ficher JSON en 
 # Conversion du fichier JSON en CSV avec Pandoc
-pandoc $TEMP_FILE -s -o $OUTPUT_FILE --csv
+# pandoc $TEMP_FILE -s -o $OUTPUT_FILE --csv
+
+jq -r '[.[] | @csv]' temp.json > publication.csv
 
 # Suppression du fichier temporaire
-rm $TEMP_FILE
+#rm $TEMP_FILE
