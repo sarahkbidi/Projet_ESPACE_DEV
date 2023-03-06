@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Mar  6 21:24:13 2023
-
 @author: sarah
 """
 
@@ -28,8 +26,8 @@ for doc in response.json()['response']['docs']:
     pub_type = doc.get('docType_s', '')
     pdf_link = doc.get('fileMain_s', '')
 
-    # Ajouter les données de la publication à la liste
-    publications.append({'title': title, 'authors': authors, 'type': pub_type, 'pdf_link': pdf_link})
+ # Ajouter les données de la publication à la liste
+ publications.append({'title': title, 'authors': authors, 'type': pub_type, 'pdf_link': pdf_link})
 
 # Écrire les données dans un fichier CSV
 with open('publications.csv', 'w', newline='', encoding='utf-8') as csvfile:
